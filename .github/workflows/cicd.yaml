@@ -46,6 +46,9 @@ jobs:
           poetry config pypi-token.pypi ${{ secrets.PYPI_PASSWORD }}
           poetry build
           poetry publish
+      - debug:
+        run: |
+          echo ${{github.ref }}
       - name: create release
         uses: ncipollo/release-action@v1
         #with:
