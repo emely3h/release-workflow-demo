@@ -9,19 +9,6 @@ packages = [{include = "release_workflow_demo"}]
 [tool.poetry.dependencies]
 python = "^3.8"
 
-
-[tool.poetry.group.semver.dependencies]
-python-semantic-release = "^7.34.3"
-branch = "main"
-version_toml = "pyproject.toml:tool.poetry.version"
-version_source = "tag"
-commit_version_number = true # required for version_source = "tag"
-tag_commit = true
-upload_to_pypi = false
-upload_to_release = true
-hvcs = "github" # gitlab is also supported
-commit_message = "{version} [skip ci]" # skip triggering ci pipelines for version commits
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
