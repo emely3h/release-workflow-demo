@@ -48,9 +48,9 @@ jobs:
           poetry publish
       - name: create release
         uses: ncipollo/release-action@v1
-        with:
-          artifacts: "release.tar.gz,foo/*.txt"
-          tag: "v1.0.0"
+        #with:
+          # artifacts: "release.tar.gz,foo/*.txt"
+          #tag: "v1.0.0"
 
 # create dummy poetry package => poetry build should work local
 # create pypi credentials => build release first local
