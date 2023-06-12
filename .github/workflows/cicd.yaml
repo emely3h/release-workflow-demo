@@ -45,7 +45,6 @@ jobs:
           # poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_PASSWORD }}
       - name: Create release
         uses: ncipollo/release-action@v1
-
 # tag commit on master
 # update version in pyproject.toml
 # create release
