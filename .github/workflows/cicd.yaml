@@ -48,9 +48,12 @@ jobs:
           poetry publish
       - name: debug
         run: |
-          run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
+          echo $RELEASE_TAG
+          echo ${{ env.RELEASE_TAG }}
           echo ${{github.ref }}
       - name: create release
         uses: ncipollo/release-action@v1
