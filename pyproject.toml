@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "release-workflow-demo"
+name = "mypackage"
 version = "0.1.0"
 description = ""
 authors = ["emely3h <emely3h@gmail.com>"]
 readme = "README.md"
-packages = [{include = "release_workflow_demo"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+
 
 [build-system]
 requires = ["poetry-core"]
