@@ -1,4 +1,5 @@
 #!/bin/bash
+echo('Executing script !!!')
 
 # Get the latest tag on the master branch
 latest_tag=$(git describe --tags --abbrev=0)
@@ -7,4 +8,4 @@ latest_tag=$(git describe --tags --abbrev=0)
 bump2version minor --verbose  # Example: bumping the minor version
 
 # Push the updated pyproject.toml file
-git push origin master
+git push origin main
