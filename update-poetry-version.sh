@@ -2,7 +2,7 @@
 echo 'Executing script !!!'
 
 # Get the latest tag on the master branch
-latest_tag=$(git describe --tags --abbrev=0)
+latest_tag=v1.0
 
 echo 'fetched latest tag'
 
