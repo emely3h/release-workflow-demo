@@ -1,0 +1,40 @@
+name: Rastless-Cli CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
+      - master
+      - dev
+
+jobs:
+  deployment:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+   # if: branch is master
+    steps:
+      - name: Check Out Repository Code
+        uses: actions/checkout@v3
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+      - name: Update poetry version
+        run: |
+          chmod +x update-poetry-version.sh  # or chmod +x post-update
+          ./update-poetry-version.sh
+      - name: Create release
+        uses: ncipollo/release-action@v1
+
+# tag commit on master
+# update version in pyproject.toml
+# create release
+# on release
+# poetry publish + build => from where does poetry take version number?
+
+
