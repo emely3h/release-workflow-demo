@@ -43,8 +43,9 @@ jobs:
           echo VERSION!!!
           echo $(git describe --tags --abbrev=0)
           poetry version $(git describe --tags --abbrev=0)
+          poetry config pypi-token.pypi ${{ secrets.PYPI_PASSWORD }}
           poetry build
-          poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_PASSWORD }}
+          poetry publish
       - name: Create release
         uses: ncipollo/release-action@v1
 # create dummy poetry package => poetry build should work local
