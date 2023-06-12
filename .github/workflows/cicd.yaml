@@ -46,19 +46,10 @@ jobs:
           poetry config pypi-token.pypi ${{ secrets.PYPI_PASSWORD }}
           poetry build
           poetry publish
-      - name: Get latest release tag
-        id: get_release
-        run: |
-          latest_release=$(curl -s "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.tag_name')
-          echo "Latest release tag: $latest_release"
-          echo "::set-output name=tag::$latest_release"
-      - name: Create release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create release with changelog
+        uses: konfer-be/action-create-release-from-tag@v1.0.2
         with:
-          tag_name: ${{ steps.get_release.outputs.tag }}
-          release_name: Release ${{ steps.get_release.outputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }} # required
         #with:
           # artifacts: "release.tar.gz,foo/*.txt"
           #tag: "v1.0.0"
